@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= movie.name
+    p= movie.description
+    p= movie.year
+    p= movie.rating
+    label Genres:
+    ul
+        each genre in movie.genres
+            li #{genre}
+    hr
+    if user
+        if user._id == movie.posted_by
+            a.btn.btn-primary(href="/movie/edit/#{movie._id}") Edit
+            a.btn.btn-danger(href="/movie/delete/#{movie._id}") Delete
